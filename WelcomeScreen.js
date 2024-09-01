@@ -1,4 +1,4 @@
-import { Text, ScrollView, StyleSheet } from "react-native";
+import { Text, ScrollView, StyleSheet, FlatList } from "react-native";
 import * as React from "react";
 
 export default function WelcomeScreen() {
