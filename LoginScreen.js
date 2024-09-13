@@ -1,29 +1,36 @@
-import { ScrollView, Text, StyleSheet, TextInput } from 'react-native';
+import { ScrollView, Text, StyleSheet, TextInput, Pressable } from 'react-native';
 import React, { useState } from 'react';
 
 export default function LoginScreen() {
     const [email, onChangeEmail] = useState('');
     const [password, onChangePassword] = useState('');
+    const [loggedIn, onLogin] = useState(false);
 
     return (
         <ScrollView style={styles.container}>
             <Text style={styles.headerText}>Welcome to Little Lemon</Text>
-            <Text style={styles.regularText}>Login to continue </Text>
-            <TextInput
-                value={email}
-                onChangeText={onChangeEmail}
-                style={styles.inputBox}
-                placeholder={'Email'}
-                keyboardType={'email-address'}
-            ></TextInput>
-            <TextInput
-                value={password}
-                onChangeText={onChangePassword}
-                style={styles.inputBox}
-                placeholder={'Password'}
-                keyboardType={'default'}
-                secureTextEntry={true}
-            ></TextInput>
+            {loggedIn && <Text style={styles.headerText}>You are Logged in!</Text>}
+            {!loggedIn && (<><Text style={styles.regularText}>Login to continue </Text>
+                <TextInput
+                    value={email}
+                    onChangeText={onChangeEmail}
+                    style={styles.inputBox}
+                    placeholder={'Email'}
+                    keyboardType={'email-address'}
+                ></TextInput>
+                <TextInput
+                    value={password}
+                    onChangeText={onChangePassword}
+                    style={styles.inputBox}
+                    placeholder={'Password'}
+                    keyboardType={'default'}
+                    secureTextEntry={true}
+                ></TextInput>
+                <Pressable onPress={() => onLogin(!loggedIn)} style={styles.button}>
+                    <Text style={styles.buttonText}>Login</Text>
+                </Pressable>
+            </>
+            )}
         </ScrollView>
     );
 }
@@ -54,4 +61,19 @@ const styles = StyleSheet.create({
         fontSize: 16,
         borderColor: "#EDEFEE",
     },
+    button: {
+        fontSize: 22,
+        margin: 100,
+        marginVertical: 8,
+        backgroundColor: '#EE9972',
+        borderColor: '#EE9972',
+        borderWidth: 2,
+        borderRadius: 50,
+        padding: 10
+    },
+    buttonText: {
+        color: 'black',
+        textAlign: 'center',
+        fontSize: 25
+    }
 });
