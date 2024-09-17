@@ -1,16 +1,26 @@
-import { ScrollView, Text, StyleSheet, TextInput, Pressable } from 'react-native';
+import { ScrollView, Text, StyleSheet, TextInput, Pressable, useColorScheme } from 'react-native';
 import React, { useState } from 'react';
 
 export default function LoginScreen() {
     const [email, onChangeEmail] = useState('');
     const [password, onChangePassword] = useState('');
     const [loggedIn, onLogin] = useState(false);
-
+    const colorScheme = useColorScheme();
+    
     return (
         <ScrollView style={styles.container}>
-            <Text style={styles.headerText}>Welcome to Little Lemon</Text>
-            {loggedIn && <Text style={styles.headerText}>You are Logged in!</Text>}
-            {!loggedIn && (<><Text style={styles.regularText}>Login to continue </Text>
+            <Text style={[
+					styles.headerText,
+					colorScheme === 'light' ? { color: '#333333' } : { color: '#EDEFEE' }
+				]}>Welcome to Little Lemon</Text>
+            {loggedIn && <Text style={[
+				styles.headerText,
+				colorScheme === 'light' ? { color: '#333333' } : { color: '#EDEFEE' }
+			]}>You are Logged in!</Text>}
+            {!loggedIn && (<><Text style={[
+				styles.regularText,
+				colorScheme === 'light' ? { color: '#333333' } : { color: '#EDEFEE' }
+			]}>Login to continue </Text>
                 <TextInput
                     value={email}
                     onChangeText={onChangeEmail}
