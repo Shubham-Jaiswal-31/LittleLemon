@@ -19,8 +19,9 @@ function App() {
 				<View style={styles.container}>
 					<LittleLemonHeader />
 					<Drawer.Navigator initialRouteName="Login">
-						<Drawer.Screen name="Welcome" options={{ title: 'Home', headerTitleAlign: 'center' }} component={WelcomeScreen} />
 						<Drawer.Screen name="Login" options={{ title: 'Login', headerTitleAlign: 'center' }} component={LoginScreen} />
+						<Drawer.Screen name="Welcome" options={{ title: 'Home', headerTitleAlign: 'center' }} component={WelcomeScreen} />
+						<Drawer.Screen name="Menu" options={{ title: 'Menu', headerTitleAlign: 'center' }} component={MenuItems} />
 					</Drawer.Navigator>
 				</View>
 				<View style={styles.footerContainer}>
